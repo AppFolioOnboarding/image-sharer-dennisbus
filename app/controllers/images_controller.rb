@@ -1,11 +1,8 @@
 class ImagesController < ApplicationController
-  
-  def home
-  	
-  end
+  def home; end
 
   def index
-  	@images = Image.all
+    @images = Image.all
   end
 
   def show
@@ -26,10 +23,9 @@ class ImagesController < ApplicationController
     end
   end
 
+  private
 
-	private
-	def image_params
-	  params.require(:image).permit(:name, :url)
-	end
-
+  def image_params
+    params.require(:image).permit(:name, :url)
+  end
 end
