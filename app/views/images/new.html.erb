@@ -1,10 +1,10 @@
 <h1>Share an image</h1>
 
-<p>Provide an image url below to share</p>
+<p>Share the images you like with others.</p>
 
 <%= form_with model: @image do |form| %>
   <div>
-    <%= form.label :name %><br>
+    Image <%= form.label :name %><br>
     <%= form.text_field :name %>
     <% if @image.errors.count > 0 %>
       <%= @image.errors.full_messages_for(:name).each do |message| %>
@@ -14,7 +14,7 @@
   </div>
 
   <div>
-    <%= form.label :url %><br>
+    Image <%= form.label :url %><br>
     <%= form.text_area :url %><br>
     <% if @image.errors.count > 0 %>
       <%= @image.errors.full_messages_for(:url).each do |message| %>
