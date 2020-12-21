@@ -1,0 +1,13 @@
+<h1>Images gallery</h1>
+
+<h3>Our image sharer application has <%= @images.count %> images and counting!
+<%= link_to "Share your new image here!", new_image_path %></h3>
+
+<ul>
+  <% @images.order("created_at desc").each do |image| %>
+    <li>
+      <%= link_to image.name, image %><br/>
+      <img src="<%= image.url %>" width="400px"></img>
+    </li>
+  <% end %>
+</ul>

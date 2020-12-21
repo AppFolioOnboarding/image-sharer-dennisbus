@@ -1,0 +1,29 @@
+<h1>Share an image</h1>
+
+<p>Provide an image url below to share</p>
+
+<%= form_with model: @image do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% if @image.errors.count > 0 %>
+      <%= @image.errors.full_messages_for(:name).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :url %><br>
+    <%= form.text_area :url %><br>
+    <% if @image.errors.count > 0 %>
+      <%= @image.errors.full_messages_for(:url).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
