@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class ImagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get home" do
-    get images_home_url
+  test "should get index" do
+    get images_url
     assert_response :success
   end
 
