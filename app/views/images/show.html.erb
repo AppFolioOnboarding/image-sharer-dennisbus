@@ -2,6 +2,11 @@
 
 <p>HTTP URL: <%= @image.url %></p>
 
+<p>Tags: <%= @image.tag_list %>
+</p>
+
 <ul>
 	<img src="<%= @image.url %>" width="100%"></img>
 </ul>
+
+<br><p><%= link_to 'Back to Home', images_path() %></p>

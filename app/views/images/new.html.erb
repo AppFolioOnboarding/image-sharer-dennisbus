@@ -24,6 +24,13 @@
   </div>
 
   <div>
+    Tag List (add tag seperated by comma)<br>
+    <%= form.text_area :tag_list %><br>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+<br><p><%= link_to 'Back to Home', images_path() %></p>

@@ -53,5 +53,22 @@ class ImageTest < ActiveSupport::TestCase
     assert_not_nil(Image.find(image.id))
     assert_equal(Image.find(image.id).name, img_name)
     assert_equal(Image.find(image.id).url, img_url)
+    assert_empty(Image.find(image.id).tag_list)
+  end
+
+  test 'save image with tags' do
+    image = Image.new
+    img_name = 'fav img tags'
+    image.name = img_name
+    img_url = 'http://www.google.com/678.png'
+    image.url = img_url
+    tag_list = 'num6, num7, num8'
+    image.tag_list = tag_list
+    assert image.save
+    assert_empty(image.errors.full_messages, '')	# no error mesg
+
+    # Image stored in database
+    assert_not_nil(Image.find(image.id))
+    assert_equal(Image.find(image.id).tag_list, tag_list.gsub(/\s+/, '').split(','))
   end
 end
