@@ -12,14 +12,14 @@ class ImageTest < ActiveSupport::TestCase
     image = Image.new
     image.url = 'http://www.google.com/12345.png'
     image.save
-    assert_equal(image.errors.full_messages, ["Name can't be blank"], '')
+    assert_equal(image.errors.full_messages, ["Name can't be blank"])
   end
 
   test 'should not save image without url' do
     image = Image.new
     image.name = 'fav img'
     assert_not image.save
-    assert_equal(image.errors.full_messages, ["Url can't be blank", url_error_mesg], '')
+    assert_equal(image.errors.full_messages, ["Url can't be blank", url_error_mesg])
   end
 
   test 'should not save image without valid url' do
@@ -27,7 +27,7 @@ class ImageTest < ActiveSupport::TestCase
     image.name = 'fav img'
     image.url = 'invalid url path'
     assert_not image.save
-    assert_equal(image.errors.full_messages, [url_error_mesg], '')
+    assert_equal(image.errors.full_messages, [url_error_mesg])
   end
 
   test 'should not save image without http url' do
@@ -35,7 +35,7 @@ class ImageTest < ActiveSupport::TestCase
     image.name = 'fav img'
     image.url = 'www.google.com/12345.png'
     assert_not image.save
-    assert_equal(image.errors.full_messages, [url_error_mesg], '')
+    assert_equal(image.errors.full_messages, [url_error_mesg])
   end
 
   test 'save image successfully' do
