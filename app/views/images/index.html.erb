@@ -1,7 +1,12 @@
 <h1>Images gallery</h1>
 
-<h3>Our image sharer application has <%= @images.count %> images and counting!
-<%= link_to "Share your new image here!", new_image_path %></h3>
+<% if params[:tag] %>
+  <h3>Our image sharer application has <%= @images.count %> images with tag <b><%= params[:tag] %></b>
+  <br><p><%= link_to 'See all images', images_path %></p>
+<% else %>
+  <h3>Our image sharer application has <%= @images.count %> images and counting!
+  <%= link_to "Share your new image here!", new_image_path %></h3>
+<% end %>
 
 <ul>
   <% @images.each do |image| %>
