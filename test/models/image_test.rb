@@ -46,7 +46,7 @@ class ImageTest < ActiveSupport::TestCase
     img_url = 'http://www.google.com/12345.png'
     image.url = img_url
     assert image.save
-    assert_empty(image.errors.full_messages, '')	# no error mesg
+    assert_empty(image.errors.full_messages) # no error mesg
 
     # Image stored in database
     assert_equal(Image.all.size, db_size + 1)
@@ -65,10 +65,10 @@ class ImageTest < ActiveSupport::TestCase
     tag_list = 'num6, num7, num8'
     image.tag_list = tag_list
     assert image.save
-    assert_empty(image.errors.full_messages, '')	# no error mesg
+    assert_empty(image.errors.full_messages) # no error mesg
 
     # Image stored in database
     assert_not_nil(Image.find(image.id))
-    assert_equal(Image.find(image.id).tag_list, tag_list.gsub(/\s+/, '').split(','))
+    assert_equal(Image.find(image.id).tag_list, tag_list.split(', '))
   end
 end
