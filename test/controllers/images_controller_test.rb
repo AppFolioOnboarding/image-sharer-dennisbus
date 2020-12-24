@@ -34,4 +34,13 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
       assert_select 'li', 1 # one li found for the new tag 'ruby'
     end
   end
+
+  test 'should delete image' do
+    @image = images(:two)
+    assert_difference('Image.count', -1) do
+      delete image_url(@image)
+    end
+
+    assert_redirected_to images_url
+  end
 end

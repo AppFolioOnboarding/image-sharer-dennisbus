@@ -86,4 +86,10 @@ class ImageTest < ActiveSupport::TestCase
     find_images = Image.tagged_with('rails')
     assert_equal 1, find_images.size # after adding the tag
   end
+
+  test 'destroy image' do
+    image = images(:two)
+    assert_equal 'MyString', image.name
+    assert image.destroy
+  end
 end

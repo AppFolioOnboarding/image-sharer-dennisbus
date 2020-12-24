@@ -8,6 +8,10 @@
   <% end %>
 </p>
 
+<p><%= link_to "Delete this image", image_path(@image),
+                                    method: :delete,
+                                    data: { confirm: "Are you sure to delete this image?" } %></p>
+
 <ul>
 	<img src="<%= @image.url %>" width="100%"></img>
 </ul>
