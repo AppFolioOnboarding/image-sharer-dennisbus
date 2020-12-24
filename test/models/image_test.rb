@@ -74,7 +74,7 @@ class ImageTest < ActiveSupport::TestCase
 
   test 'retrieve image with tags' do
     find_images = Image.tagged_with('rails')
-    assert_equal(find_images.size, 0)
+    assert_equal 0, find_images.size # before adding the tag
 
     image = Image.new
     img_name = 'ruby rail'
@@ -84,6 +84,6 @@ class ImageTest < ActiveSupport::TestCase
     assert image.save
 
     find_images = Image.tagged_with('rails')
-    assert_equal(find_images.size, 1)
+    assert_equal 1, find_images.size # after adding the tag
   end
 end
