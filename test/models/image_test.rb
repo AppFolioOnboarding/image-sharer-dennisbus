@@ -71,4 +71,19 @@ class ImageTest < ActiveSupport::TestCase
     assert_not_nil(Image.find(image.id))
     assert_equal(Image.find(image.id).tag_list, tag_list.split(', '))
   end
+
+  test 'retrieve image with tags' do
+    find_images = Image.tagged_with('rails')
+    assert_equal 0, find_images.size # before adding the tag
+
+    image = Image.new
+    img_name = 'ruby rail'
+    image.name = img_name
+    image.url = 'http://www.google.com/678.png'
+    image.tag_list = 'ruby, rails'
+    assert image.save
+
+    find_images = Image.tagged_with('rails')
+    assert_equal 1, find_images.size # after adding the tag
+  end
 end
