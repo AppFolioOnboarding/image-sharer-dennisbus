@@ -90,6 +90,9 @@ class ImageTest < ActiveSupport::TestCase
   test 'destroy image' do
     image = images(:two)
     assert_equal 'MyString', image.name
-    assert image.destroy
+
+    assert_difference('Image.count', -1) do
+      image.destroy
+    end
   end
 end
