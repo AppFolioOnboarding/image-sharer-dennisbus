@@ -13,9 +13,10 @@
     <% end %>
   </div>
 
+  <br/>
   <div>
     Image <%= form.label :url %><br>
-    <%= form.text_area :url %><br>
+    <%= form.text_area :url %>
     <% if @image.errors.count > 0 %>
       <%= @image.errors.full_messages_for(:url).each do |message| %>
         <div><%= message %></div>
@@ -23,11 +24,18 @@
     <% end %>
   </div>
 
+  <br/>
   <div>
     Tag List (add tag seperated by comma)<br>
-    <%= form.text_area :tag_list %><br>
+    <%= form.text_area :tag_list %>
+    <% if @image.errors.count > 0 %>
+      <%= @image.errors.full_messages_for(:tag_list).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    <% end %>
   </div>
 
+  <br/>
   <div>
     <%= form.submit %>
   </div>
