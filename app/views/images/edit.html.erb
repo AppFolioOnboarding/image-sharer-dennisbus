@@ -1,14 +1,29 @@
+<h1 id="header">
+Edit Image Tags:
+</h1>
+
 <h1><%= @image.name %></h1>
 
 <p>HTTP URL: <%= @image.url %></p>
 
-<p>Tags:
-  <% @image.tag_list.each do |tag| %>
-      <%= link_to tag, images_path(tag: tag) %>&nbsp;
-  <% end %>
-</p>
+<%= form_with model: @image do |form| %>
 
-<p><%= link_to "Edit tags", edit_image_path(@image) %></p>
+
+<div>Edit tags:
+  <%= form.text_area :tag_list %>
+    <% if @image.errors.count > 0 %>
+      <%= @image.errors.full_messages_for(:tag_list).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    <% end %>
+</div>
+
+<br/>
+<div>
+  <%= form.submit %>
+</div>
+<% end %>
+
 <p><%= link_to "Delete this image", image_path(@image),
                                     method: :delete,
                                     data: { confirm: "Are you sure to delete this image?" } %></p>

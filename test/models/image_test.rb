@@ -105,4 +105,19 @@ class ImageTest < ActiveSupport::TestCase
       image.destroy
     end
   end
+
+  def test_update_img_tag
+    image = images(:two)
+    img_name = 'fav img'
+    image.name = img_name
+    img_url = 'http://www.google.com/12345.png'
+    image.url = img_url
+    img_tag = 'ruby, rails'
+    image.tag_list = img_tag
+
+    assert image.save
+    assert_predicate(image, :valid?)
+    assert_empty(image.errors.full_messages) # no error mesg
+    assert_equal(img_tag.split(', '), image.tag_list)
+  end
 end
