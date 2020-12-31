@@ -13,7 +13,7 @@ Edit Image Tags:
   <%= form.text_area :tag_list %>
     <% if @image.errors.count > 0 %>
       <%= @image.errors.full_messages_for(:tag_list).each do |message| %>
-        <div><%= message %></div>
+        <div id="tagMesg"><%= message %></div>
       <% end %>
     <% end %>
 </div>

@@ -54,6 +54,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   def test_update_image_tag_success
     @image = images(:two)
     assert_equal('MyString', @image.name)
+    assert_equal([], @image.tag_list)
 
     img_name = 'twoImg'
     img_url = 'https://www.goog.com/2020.png'
@@ -65,19 +66,20 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     @image.reload
 
     assert_equal([img_tag], @image.tag_list)
-    assert_equal(img_name, @image.name)
-    assert_equal(img_url, @image.url)
+    assert_not_equal(img_name, @image.name)
+    assert_not_equal(img_url, @image.url)
   end
 
   def test_update_image_tag_fail
     @image = images(:two)
 
     img_name = 'twoImg'
-    img_url = 'https://'
-    img_tag = 'tag for two'
+    img_url = 'https://www.google.com/ruby.png'
+    img_tag = ''
     image_params = { name: img_name, url: img_url, tag_list: img_tag }
     put image_path(@image.id), params: { image: image_params }
 
-    assert_select('#header', 'Edit Image Tags:') # validation failed on url and redirect to edit page
+    assert_select('#header', 'Edit Image Tags:')
+    assert_select('#tagMesg', 'Tag list can\'t be blank')
   end
 end

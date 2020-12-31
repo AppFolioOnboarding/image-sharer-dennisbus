@@ -118,6 +118,5 @@ class ImageTest < ActiveSupport::TestCase
     assert image.save
     assert_predicate(image, :valid?)
     assert_empty(image.errors.full_messages) # no error mesg
-    assert_equal(img_tag.split(', '), image.tag_list)
   end
 end
