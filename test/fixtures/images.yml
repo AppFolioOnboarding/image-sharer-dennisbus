@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  url: MyText
+  url: http://guides.rubyonrails.org/rails.jpg
 
 two:
   name: MyString
-  url: MyText
+  url: http://api.rubyonrails.org/ruby.png
